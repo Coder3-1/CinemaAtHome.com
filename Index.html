@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Cinema AT Home</title>
+        <style>
+            body
+            {
+                background-color: black;
+            }
+            #loading 
+            {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            #bgvideo 
+            {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                width: 100%; 
+                min-height: 100%;
+            }
+            #input
+            {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                z-index: 100;
+                height: 30px;
+                font-size: larger;
+                background-color: black;
+                color: red;
+            }   
+            #video
+            {
+                background-color: black;
+            }
+            p
+            {
+                color: red;
+                margin-top: 25%;
+                margin-left: 38%;
+                font-size: large;
+                font-family: 'Times New Roman', Times, serif;
+            }
+        </style>
+    </head>
+    <body>
+        <p>First download the video in pc and then play it.</p>
+        <div id="loading">
+            <input type="file" id="input" name="input_video" accept="video/mp4, video/mov">
+            <video id="video" width="100%" height="98%" controls style="display: none;"></video>
+        </div>
+        <script>
+            document.getElementById("input").addEventListener("change", function() {
+            var media = URL.createObjectURL(this.files[0]);
+            var video = document.getElementById("video");
+            video.src = media;
+            video.style.display = "block";
+            video.play();
+            });
+        </script>
+    </body>
+</html>
